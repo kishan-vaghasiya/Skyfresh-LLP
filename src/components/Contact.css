@@ -1,0 +1,91 @@
+.contact-section {
+  padding: 5rem 0;
+  background: linear-gradient(135deg, #f2f6f9, #e6eef1);
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.section-title {
+  font-size: 2.7rem;
+  font-weight: 800;
+  color: #1f2d3d;
+  letter-spacing: 1px;
+}
+
+.section-subtitle {
+  margin-top: 10px;
+  color: #6d7b88;
+  font-size: 1.1rem;
+}
+
+/* 4 Cards Row */
+.contact-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+}
+
+/* PREMIUM CARD STYLE */
+.contact-card-premium {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(12px);
+  padding: 28px;
+  text-align: center;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,0.4);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease;
+  position: relative;
+}
+
+/* Gradient glow on hover */
+.contact-card-premium:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(0,0,0,0.12);
+  border: 1px solid #9bd396;
+}
+
+/* Icon Badge */
+.card-icon-badge {
+  font-size: 2.4rem;
+  background: linear-gradient(135deg, #7dbb63, #aadf8e);
+  width: 65px;
+  height: 65px;
+  display: flex;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin: 0 auto 15px auto;
+  box-shadow: 0 6px 15px rgba(125, 187, 99, 0.4);
+}
+
+.contact-card-premium h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #1c2a36;
+  margin-bottom: 8px;
+}
+
+.contact-card-premium p {
+  color: #5d6b78;
+  margin: 5px 0;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .contact-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 500px) {
+  .contact-row {
+    grid-template-columns: 1fr;
+  }
+}

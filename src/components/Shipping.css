@@ -1,0 +1,676 @@
+.shipping-section {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, rgba(244, 196, 48, 0.2), rgba(125, 187, 99, 0.2), rgba(255, 255, 255, 0.6));
+  background-size: 400% 400%;
+  animation: gradientShift 12s ease infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+.shipping-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="waves" x="0" y="0" width="100" height="20" patternUnits="userSpaceOnUse"><path d="M0,10 Q25,0 50,10 T100,10" stroke="%23f4c430" stroke-width="2" fill="none"/></pattern></defs><rect width="100" height="100" fill="url(%23waves)"/></svg>');
+  opacity: 0.1;
+  z-index: 1;
+}
+
+.shipping-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  margin-bottom: 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.shipping-info h3 {
+  font-size: 3rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--color-green), var(--color-yellow), #fff2c1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.shipping-info h3::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--color-green), var(--color-yellow));
+  border-radius: 2px;
+  animation: titleUnderline 2s ease-in-out infinite alternate;
+}
+
+.shipping-info p {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.shipping-features {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 25px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.feature-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(244, 196, 48, 0.15), transparent);
+  transition: left 0.5s ease;
+}
+
+.feature-item:hover::before {
+  left: 100%;
+}
+
+.feature-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+  background: rgba(255, 255, 255, 1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-green), var(--color-yellow));
+  border-radius: 50%;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(31, 67, 50, 0.25);
+}
+
+.feature-item:hover .feature-icon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 8px 25px rgba(31, 67, 50, 0.3);
+}
+
+.feature-text h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.feature-text p {
+  color: #6c757d;
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Shipping Visual */
+.shipping-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.container-ship {
+  position: relative;
+  width: 400px;
+  height: 300px;
+}
+
+.ship-body {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 350px;
+  height: 120px;
+  background: linear-gradient(135deg, #34495e, #2c3e50);
+  border-radius: 10px 10px 0 0;
+  z-index: 3;
+}
+
+.ship-deck {
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(135deg, #ecf0f1, #bdc3c7);
+  border-radius: 10px 10px 0 0;
+}
+
+.ship-containers {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 4;
+}
+
+.container-box {
+  width: 80px;
+  height: 70px;
+  background: linear-gradient(135deg, #f4c430, #f2a007);
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  animation: float 3s ease-in-out infinite;
+}
+
+.container-box:nth-child(2) {
+  background: linear-gradient(135deg, #fff2c1, #f4c430);
+  animation-delay: 0.5s;
+}
+
+.container-box:nth-child(3) {
+  background: linear-gradient(135deg, #2d6a4f, #7dbb63);
+  animation-delay: 1s;
+}
+
+.container-door {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+  border: 2px solid rgba(255,255,255,0.3);
+}
+
+.container-label {
+  position: absolute;
+  bottom: 5px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+.ship-waves {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  z-index: 1;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  background: linear-gradient(90deg, #7dbb63, #f4c430);
+  border-radius: 50% 50% 0 0;
+  opacity: 0.7;
+}
+
+.wave-1 {
+  animation: wave 2s ease-in-out infinite;
+}
+
+.wave-2 {
+  height: 15px;
+  bottom: 5px;
+  animation: wave 2s ease-in-out infinite 0.5s;
+  opacity: 0.5;
+}
+
+.wave-3 {
+  height: 10px;
+  bottom: 10px;
+  animation: wave 2s ease-in-out infinite 1s;
+  opacity: 0.3;
+}
+
+/* Flags Section */
+.flags-section {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.flags-section h3 {
+  font-size: 2rem;
+  color: #2c3e50;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.flags-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.flag-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 20px;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.flag-item:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+
+.flag {
+  font-size: 3rem;
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+
+.flag-item:hover .flag {
+  transform: scale(1.1);
+}
+
+.flag-item span {
+  font-size: 0.9rem;
+  color: #2c3e50;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes titleUnderline {
+  0% {
+    width: 80px;
+    opacity: 0.7;
+  }
+  100% {
+    width: 120px;
+    opacity: 1;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes wave {
+  0%, 100% {
+    transform: translateX(0px);
+  }
+  50% {
+    transform: translateX(10px);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+}
+
+.fade-in-right {
+  animation: fadeInRight 0.8s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .shipping-content {
+    gap: 50px;
+  }
+  
+  .shipping-info h3 {
+    font-size: 2.5rem;
+  }
+  
+  .container-ship {
+    width: 350px;
+    height: 280px;
+  }
+  
+  .ship-body {
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .shipping-section {
+    padding: 4rem 0;
+  }
+  
+  .shipping-content {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  
+  .shipping-info h3 {
+    font-size: 2rem;
+    text-align: center;
+  }
+  
+  .shipping-info p {
+    text-align: center;
+    font-size: 1rem;
+  }
+  
+  .shipping-features {
+    gap: 20px;
+  }
+  
+  .feature-item {
+    padding: 20px;
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .feature-icon {
+    font-size: 2rem;
+    width: 60px;
+    height: 60px;
+  }
+  
+  .feature-text h4 {
+    font-size: 1.2rem;
+  }
+  
+  .feature-text p {
+    font-size: 0.9rem;
+  }
+  
+  .container-ship {
+    width: 300px;
+    height: 250px;
+  }
+  
+  .ship-body {
+    width: 280px;
+  }
+  
+  .container-box {
+    width: 60px;
+    height: 55px;
+  }
+  
+  .container-label {
+    font-size: 0.6rem;
+  }
+  
+  .flags-section h3 {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+  }
+  
+  .flags-grid {
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 20px;
+  }
+  
+  .flag {
+    font-size: 2.5rem;
+    width: 60px;
+    height: 45px;
+  }
+  
+  .flag-item {
+    padding: 15px;
+  }
+  
+  .flag-item span {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .shipping-section {
+    padding: 3rem 0;
+  }
+  
+  .shipping-content {
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  
+  .shipping-info h3 {
+    font-size: 1.8rem;
+  }
+  
+  .shipping-info p {
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+  }
+  
+  .shipping-features {
+    gap: 15px;
+  }
+  
+  .feature-item {
+    padding: 15px;
+    gap: 12px;
+  }
+  
+  .feature-icon {
+    font-size: 1.8rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .feature-text h4 {
+    font-size: 1.1rem;
+  }
+  
+  .feature-text p {
+    font-size: 0.85rem;
+  }
+  
+  .container-ship {
+    width: 250px;
+    height: 200px;
+  }
+  
+  .ship-body {
+    width: 230px;
+    height: 100px;
+  }
+  
+  .container-box {
+    width: 50px;
+    height: 45px;
+  }
+  
+  .container-label {
+    font-size: 0.5rem;
+  }
+  
+  .flags-section h3 {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+  }
+  
+  .flags-grid {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 15px;
+  }
+  
+  .flag {
+    font-size: 2rem;
+    width: 50px;
+    height: 38px;
+  }
+  
+  .flag-item {
+    padding: 12px;
+  }
+  
+  .flag-item span {
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .shipping-section {
+    padding: 2.5rem 0;
+  }
+  
+  .shipping-content {
+    gap: 25px;
+  }
+  
+  .shipping-info h3 {
+    font-size: 1.6rem;
+  }
+  
+  .shipping-info p {
+    font-size: 0.85rem;
+  }
+  
+  .feature-item {
+    padding: 12px;
+  }
+  
+  .feature-icon {
+    font-size: 1.5rem;
+    width: 45px;
+    height: 45px;
+  }
+  
+  .feature-text h4 {
+    font-size: 1rem;
+  }
+  
+  .feature-text p {
+    font-size: 0.8rem;
+  }
+  
+  .container-ship {
+    width: 220px;
+    height: 180px;
+  }
+  
+  .ship-body {
+    width: 200px;
+    height: 90px;
+  }
+  
+  .container-box {
+    width: 45px;
+    height: 40px;
+  }
+  
+  .flags-grid {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 12px;
+  }
+  
+  .flag {
+    font-size: 1.8rem;
+    width: 45px;
+    height: 35px;
+  }
+  
+  .flag-item {
+    padding: 10px;
+  }
+  
+  .flag-item span {
+    font-size: 0.7rem;
+  }
+}
