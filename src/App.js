@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import ProductDetails from './pages/ProductDetails';
 import './App.css';
+import WhatsAppFloat from './components/WhatsAppFloat';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
             <Route path="/product/:productId" element={<ProductDetails />} />
           </Routes>
         </Router>
-      
+        <WhatsAppFloat />
     </>
   );
 }

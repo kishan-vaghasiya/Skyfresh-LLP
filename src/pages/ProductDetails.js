@@ -8,6 +8,7 @@ import './ProductDetails.css';
 function useInView(threshold = 0.15) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
+  
   useEffect(() => {
     const el = ref.current;
     if (!el) return;

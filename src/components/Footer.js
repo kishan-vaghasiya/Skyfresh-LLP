@@ -1,6 +1,7 @@
 import React from 'react';
 import './Footer.css';
 import { imgPath } from '../assets';
+import { PRODUCT_CATALOG, CATEGORIES } from '../data/productCatalog';
 
 const Footer = () => {
   return (
@@ -44,19 +45,20 @@ const Footer = () => {
           <div className="footer-section">
             <h3>Products</h3>
             <div className="product-columns">
+              {
+                // Build a small list: top 4 product titles and categories to keep footer compact
+              }
               <ul className="footer-links">
-                <li><a href="#products">Onion Powder</a></li>
-                <li><a href="#products">Garlic Powder</a></li>
-                <li><a href="#products">Potato Powder</a></li>
-                <li><a href="#products">Mint Powder</a></li>
-                <li><a href="#products">Turmeric Powder</a></li>
+                {Object.entries(PRODUCT_CATALOG).slice(0, 4).map(([id, p]) => (
+                  <li key={id}><a href="#products">{p.title}</a></li>
+                ))}
+                <li><a href="#products" className="view-all">View all products ({Object.keys(PRODUCT_CATALOG).length})</a></li>
               </ul>
+
               <ul className="footer-links">
-                <li><a href="#products">Cumin Powder</a></li>
-                <li><a href="#products">Coriander Powder</a></li>
-                <li><a href="#products">Red Chili Powder</a></li>
-                <li><a href="#products">AMCHUR POWDER</a></li>
-                <li><a href="#products">KESAR MANGO PULP</a></li>
+                {CATEGORIES.map((c) => (
+                  <li key={c.id}><a href={`#products`} data-category={c.id}>{c.emoji} {c.label}</a></li>
+                ))}
               </ul>
             </div>
           </div>
