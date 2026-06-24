@@ -13,34 +13,43 @@ const Shipping = () => {
     <section id="shipping" className="shipping-section">
       <div className="container">
         <div className={`section-header ${isLoaded ? 'fade-in-up' : ''}`}>
-          <h2 className="section-title">Global Shipping & Export</h2>
-          <p className="section-subtitle">Reliable sea freight to destinations worldwide</p>
+          <h2 className="section-title">Our Products & Quality Commitment</h2>
+          <p className="section-subtitle">Premium dehydrated vegetables, spices and processed food — fresh, hygienic and export-ready</p>
         </div>
         
         <div className="shipping-content">
           <ScrollAnimation animation="fade-in-left" delay={0.1}>
             <div className="shipping-info">
-              <h3>Sea Container Shipping</h3>
-              <p>We use modern sea containers to ensure your products reach their destination safely and efficiently.</p>
-              
+              <h3>Premium Product Offerings</h3>
+              <p>We specialize in dehydrated vegetables, spices, nut products and pulsed ingredients — examples include Dehydrated Red & White Onion, Dehydrated Garlic, Turmeric & Chili powders, Kesar Mango Pulp and export-grade peanut products.</p>
+
               <div className="shipping-features">
-                
                 <ScrollAnimation animation="fade-in-up" delay={0.3}>
                   <div className="feature-item">
-                    <div className="feature-icon">🌡️</div>
+                    <div className="feature-icon">🌿</div>
                     <div className="feature-text">
-                      <h4>Temperature Controlled</h4>
-                      <p>Maintains optimal conditions for food products</p>
+                      <h4>Farm-to-Factory Freshness</h4>
+                      <p>Sourced locally from Gujarat farms and processed to retain aroma and nutrients.</p>
                     </div>
                   </div>
                 </ScrollAnimation>
-                
+
                 <ScrollAnimation animation="fade-in-up" delay={0.4}>
+                  <div className="feature-item">
+                    <div className="feature-icon">✔️</div>
+                    <div className="feature-text">
+                      <h4>Export-Grade Quality</h4>
+                      <p>Strict quality checks, commercial A-grade and packaging options to meet buyer specifications.</p>
+                    </div>
+                  </div>
+                </ScrollAnimation>
+
+                <ScrollAnimation animation="fade-in-up" delay={0.5}>
                   <div className="feature-item">
                     <div className="feature-icon">📦</div>
                     <div className="feature-text">
-                      <h4>Secure Packaging</h4>
-                      <p>Protective packaging for long journeys</p>
+                      <h4>Flexible Packaging</h4>
+                      <p>From 1 kg retail jars to 20–50 kg bulk packs — customized packing for processors and brands.</p>
                     </div>
                   </div>
                 </ScrollAnimation>
