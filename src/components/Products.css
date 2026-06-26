@@ -408,6 +408,16 @@
     padding: 4rem 0 4.5rem;
   }
 
+  .category-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .cat-tab {
+    flex: 1 1 auto;
+    min-width: 130px;
+  }
+
   .products-header {
     margin-bottom: 2rem;
   }

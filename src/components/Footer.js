@@ -37,7 +37,7 @@ const Footer = () => {
             <ul className="footer-links">
               <li><a href="#home">Home</a></li>
               <li><a href="#products">Products</a></li>
-              <li><a href="#shipping">Shipping</a></li>
+              <li><a href="#global-reach">Global Reach</a></li>
               <li><a href="#contact">Contact</a></li>
             </ul>
           </div>

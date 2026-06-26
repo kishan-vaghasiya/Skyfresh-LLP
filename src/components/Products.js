@@ -7,9 +7,6 @@ import './Products.css';
 function useInView(options = {}) {
   const ref = useRef(null);
   const [inView, setInView] = useState(false);
-  // keep a stable reference to options so the effect doesn't need options
-  // in its dependency array (prevents unnecessary re-subscribes and
-  // satisfies the react-hooks/exhaustive-deps rule).
   const optionsRef = useRef(options);
   optionsRef.current = options;
 

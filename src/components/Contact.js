@@ -29,7 +29,6 @@ const Contact = () => {
     setStatus({ type: '', message: '' });
     if (!validate()) return;
 
-    // Placeholder: no backend. Simulate success.
     setTimeout(() => {
       setStatus({ type: 'success', message: 'Thanks! Your message has been received.' });
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
@@ -72,7 +71,6 @@ const Contact = () => {
                       <option value="">Choose a subject</option>
                       <option>General Inquiry</option>
                       <option>Export / Bulk Orders</option>
-                      <option>Partnership</option>
                     </select>
                   </div>
                 </div>
@@ -98,8 +96,8 @@ const Contact = () => {
                 <div className="card-icon">👥</div>
                 <div className="card-body">
                   <h4>Contact Persons</h4>
-                  <a href="tel:+917096880152">Kishan: +91 70968 80152</a>
-                  <a href="tel:+917041900308">Harsh: +91 70419 00308</a>
+                  <a href="tel:+917096880152">+91 70968 80152</a>
+                  <a href="tel:+917041900308">+91 70419 00308</a>
                 </div>
               </div>
 

@@ -235,6 +235,14 @@
   .footer-logo {
     justify-content: center;
   }
+
+  .product-columns {
+    flex-direction: column;
+    align-items: center;
+  }
+  .footer-links a {
+    font-size: 0.95rem;
+  }
 }
 
 @media (max-width: 480px) {

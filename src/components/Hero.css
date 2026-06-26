@@ -610,6 +610,7 @@
   .hero-showcase {
     max-width: 360px;
     gap: 0.65rem;
+    width: 100%;
   }
 
   .hero-showcase-grid {

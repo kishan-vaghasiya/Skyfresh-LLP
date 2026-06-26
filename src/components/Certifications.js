@@ -1,113 +1,161 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Certifications.css';
-import ScrollAnimation from './ScrollAnimation';
+
+const qualityCards = [
+  {
+    icon: '🌱',
+    title: 'Direct Farmer Sourcing',
+    desc: 'Our deep network with farmers ensures fresh, consistent quality and competitive pricing at every harvest.',
+  },
+  {
+    icon: '📦',
+    title: 'Wide Product Range',
+    desc: 'Spices, rice, edible oils, ghee, fruits, vegetables, and groundnut — one source for all your agro needs.',
+  },
+  {
+    icon: '🔬',
+    title: 'Strict Quality Control',
+    desc: 'Every batch inspected for purity, weight, and export readiness before it leaves our facility.',
+  },
+  {
+    icon: '📄',
+    title: 'Export Documentation',
+    desc: 'International trade expertise ensures smooth documentation and hassle-free customs clearance.',
+  },
+  {
+    icon: '🛡️',
+    title: 'Safe Hygienic Packaging',
+    desc: 'High-grade materials preserve freshness and protect integrity throughout international shipping.',
+  },
+  {
+    icon: '🌍',
+    title: 'Global Market Commitment',
+    desc: 'Proudly exporting Indian agricultural excellence to buyers across the globe, every season.',
+  },
+];
+
+const differentiators = [
+  { title: 'Fast Turnaround', desc: 'Harvest to shipment with reliable timelines for every order', tag: 'On Time' },
+  { title: 'Modern Processing', desc: 'Advanced dehydration systems, low waste, high yield', tag: 'Premium' },
+  { title: 'Batch Verification', desc: 'Purity, weight and export readiness checked every time', tag: 'Verified' },
+  { title: 'International Standards', desc: 'Prepared to meet global buyer preferences and regulations', tag: 'Global' },
+];
+
+const metrics = [
+  { id: 'm1', target: 99.8, suffix: '%', label: 'Quality Pass Rate', display: '99.8%' },
+  { id: 'm2', target: 100, suffix: '%', label: 'Lab Tested', display: '100%' },
+  { id: 'm3', target: 100, suffix: '%', label: 'Natural Products', display: '100%' },
+  { id: 'm4', target: 0, suffix: '%', label: 'Preservatives', display: '0%' },
+];
+
+function useCountUp(target, duration = 1200, start = false) {
+  const [value, setValue] = useState(0);
+  useEffect(() => {
+    if (!start) return;
+    if (target === 0) { setValue(0); return; }
+    let current = 0;
+    const steps = Math.ceil(duration / 16);
+    const increment = target / steps;
+    const timer = setInterval(() => {
+      current = Math.min(current + increment, target);
+      setValue(parseFloat(current.toFixed(1)));
+      if (current >= target) clearInterval(timer);
+    }, 16);
+    return () => clearInterval(timer);
+  }, [start, target, duration]);
+  return value;
+}
+
+const MetricItem = ({ metric, animate }) => {
+  const val = useCountUp(metric.target, 1300, animate);
+  return (
+    <div className="qs-metric">
+      <div className="qs-metric-val">
+        {animate ? `${val}%` : metric.display}
+      </div>
+      <div className="qs-metric-lbl">{metric.label}</div>
+    </div>
+  );
+};
 
 const Certifications = () => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  const [metricsVisible, setMetricsVisible] = useState(false);
+  const metricsRef = useRef(null);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setMetricsVisible(true); },
+      { threshold: 0.3 }
+    );
+    if (metricsRef.current) observer.observe(metricsRef.current);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <section id="certifications" className="certifications-section">
-      <div className="container">
-        <div className={`section-header ${isLoaded ? 'fade-in-up' : ''}`}>
-          <h2 className="section-title">Quality & Certifications</h2>
-          <p className="section-subtitle">Committed to the highest standards of quality and safety</p>
+    <section id="quality" className="qs-section">
+      {/* Stamp decoration */}
+      <div className="qs-stamp" aria-hidden="true">
+        <div className="qs-stamp-inner">Export<br />Ready</div>
+      </div>
+
+      <div className="qs-container">
+        {/* Header */}
+        <p className="qs-eyebrow">Established — Ahemdabad, Gujarat, India</p>
+        <h2 className="qs-headline">
+          Our Quality<br /><span className="qs-headline-accent">Promise</span>
+        </h2>
+        <p className="qs-subtitle">
+          Trusted sourcing. Premium processing. Export-ready freshness — from farm to global market.
+        </p>
+        <div className="qs-accent-bar" aria-hidden="true">
+          <span /><span /><span />
         </div>
 
-        <div className="certifications-content">
-          <ScrollAnimation animation="fade-in-left" delay={0.1}>
-            <div className="quality-standards">
-              <h3>Our Quality Standards</h3>
-              <div className="standards-grid">
-                <div className="standard-item">
-                  <div className="standard-icon">🏭</div>
-                  <h4>ISO 22000:2018</h4>
-                  <p>Food Safety Management System certified facility ensuring highest food safety standards</p>
-                </div>
-                <div className="standard-item">
-                  <div className="standard-icon">🌱</div>
-                  <h4>Organic Certified</h4>
-                  <p>100% natural, organic products with no artificial preservatives or chemicals</p>
-                </div>
-                <div className="standard-item">
-                  <div className="standard-icon">🔬</div>
-                  <h4>Lab Tested</h4>
-                  <p>Every batch tested in certified laboratories for quality, purity, and safety</p>
-                </div>
-                <div className="standard-item">
-                  <div className="standard-icon">📋</div>
-                  <h4>HACCP Compliant</h4>
-                  <p>Hazard Analysis Critical Control Points implementation for food safety</p>
-                </div>
-              </div>
+        {/* 6-card standards grid */}
+        <div className="qs-cards-grid">
+          {qualityCards.map((card) => (
+            <div className="qs-card" key={card.title}>
+              <div className="qs-card-icon" aria-hidden="true">{card.icon}</div>
+              <h4>{card.title}</h4>
+              <p>{card.desc}</p>
             </div>
-          </ScrollAnimation>
-
-          <ScrollAnimation animation="fade-in-right" delay={0.2}>
-            <div className="certifications-visual">
-              <div className="cert-badges">
-                <h4>Our Certifications</h4>
-                <div className="badges-grid">
-                  <div className="cert-badge">
-                    <div className="badge-icon">🏆</div>
-                    <h5>ISO 22000:2018</h5>
-                    <p>Food Safety Management</p>
-                    <div className="badge-status">Certified</div>
-                  </div>
-                  <div className="cert-badge">
-                    <div className="badge-icon">🌿</div>
-                    <h5>Organic Certified</h5>
-                    <p>100% Natural Products</p>
-                    <div className="badge-status">Certified</div>
-                  </div>
-                  <div className="cert-badge">
-                    <div className="badge-icon">🔒</div>
-                    <h5>HACCP</h5>
-                    <p>Food Safety System</p>
-                    <div className="badge-status">Compliant</div>
-                  </div>
-                  <div className="cert-badge">
-                    <div className="badge-icon">🌍</div>
-                    <h5>Export License</h5>
-                    <p>Government Approved</p>
-                    <div className="badge-status">Licensed</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ScrollAnimation>
+          ))}
         </div>
 
-        <ScrollAnimation animation="fade-in-up" delay={0.3}>
-          <div className="quality-metrics">
-            <h3>Quality Metrics</h3>
-            <div className="metrics-grid">
-              <div className="metric-item">
-                <div className="metric-icon">✅</div>
-                <div className="metric-value">99.8%</div>
-                <div className="metric-label">Quality Pass Rate</div>
-              </div>
-              <div className="metric-item">
-                <div className="metric-icon">🔬</div>
-                <div className="metric-value">100%</div>
-                <div className="metric-label">Lab Tested</div>
-              </div>
-              <div className="metric-item">
-                <div className="metric-icon">🌱</div>
-                <div className="metric-value">100%</div>
-                <div className="metric-label">Natural Products</div>
-              </div>
-              <div className="metric-item">
-                <div className="metric-icon">🚫</div>
-                <div className="metric-value">0%</div>
-                <div className="metric-label">Preservatives</div>
-              </div>
+        {/* Divider */}
+        <div className="qs-divider" aria-hidden="true">
+          <span>QUALITY STANDARDS</span>
+        </div>
+
+        {/* Bottom row */}
+        <div className="qs-bottom-row">
+          {/* Metrics panel */}
+          <div className="qs-metrics-panel" ref={metricsRef}>
+            <h3>By the numbers</h3>
+            <div className="qs-metrics-grid">
+              {metrics.map((m) => (
+                <MetricItem key={m.id} metric={m} animate={metricsVisible} />
+              ))}
             </div>
           </div>
-        </ScrollAnimation>
+
+          {/* Differentiators panel */}
+          <div className="qs-apart-panel">
+            <p className="qs-apart-eyebrow">What sets us apart</p>
+            <div className="qs-badge-list">
+              {differentiators.map((d) => (
+                <div className="qs-badge" key={d.title}>
+                  <div className="qs-badge-dot" aria-hidden="true" />
+                  <div className="qs-badge-info">
+                    <h5>{d.title}</h5>
+                    <p>{d.desc}</p>
+                  </div>
+                  <div className="qs-badge-tag">{d.tag}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -55,9 +55,9 @@ const Navbar = () => {
           <div className="nav-menu">
             <a href="#home" className="nav-link" onClick={handleNavClick}>Home</a>
             <a href="#about" className="nav-link" onClick={handleNavClick}>About</a>
-            <a href="#certifications" className="nav-link" onClick={handleNavClick}>Quality</a>
+            <a href="#quality" className="nav-link" onClick={handleNavClick}>Quality</a>
             <a href="#products" className="nav-link" onClick={handleNavClick}>Products</a>
-            <a href="#shipping" className="nav-link" onClick={handleNavClick}>Shipping</a>
+            <a href="#global-reach" className="nav-link" onClick={handleNavClick}>Global Reach</a>
             <a href="#contact" className="nav-link" onClick={handleNavClick}>Contact</a>
             {/* <a href="/brochure.pdf" download className="nav-link" onClick={closeMobileMenu}>Download Brochure</a> */}
           </div>
@@ -74,9 +74,9 @@ const Navbar = () => {
       <div className={`mobile-menu ${isMobileMenuOpen ? 'active' : ''}`}>
         <a href="#home" className="nav-link" onClick={handleNavClick}>Home</a>
         <a href="#about" className="nav-link" onClick={handleNavClick}>About</a>
-        <a href="#certifications" className="nav-link" onClick={handleNavClick}>Quality</a>
+        <a href="#quality" className="nav-link" onClick={handleNavClick}>Quality</a>
         <a href="#products" className="nav-link" onClick={handleNavClick}>Products</a>
-        <a href="#shipping" className="nav-link" onClick={handleNavClick}>Shipping</a>
+        <a href="#global-reach" className="nav-link" onClick={handleNavClick}>Global Reach</a>
         <a href="#contact" className="nav-link" onClick={handleNavClick}>Contact</a>
         {/* <a href="/brochure.pdf" download className="nav-link" onClick={closeMobileMenu}>Download Brochure</a> */}
       </div>

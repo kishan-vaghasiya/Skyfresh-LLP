@@ -239,7 +239,34 @@
     font-size: 1rem;
     display: none; /* Hide text on mobile to save space */
   }
+
+  .nav-container {
+    justify-content: space-between;
+    padding: 0 14px;
+  }
+  .logo {
+    height: 55px;
+    width: auto;
+  }
+  .navbar {
+    padding: 0.8rem 0;
+  }
   
+
+@media (max-width: 480px) {
+  .nav-container {
+    padding: 0 12px;
+  }
+
+  .mobile-menu {
+    top: 68px;
+  }
+
+  .mobile-menu .nav-link {
+    padding: 0.9rem 1.3rem;
+    font-size: 0.95rem;
+  }
+}
   .logo {
     height: 75px;
     width: 200px;
