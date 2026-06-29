@@ -46,6 +46,7 @@ export const productImages = {
   MintPowder:     require('./Product/MintPowder.png'),
   AmchurPowder:   require('./Product/AmchurPowder.png'),
   Carrot:         require('./Product/Carrot.png'),
+  CarrotPowder:   require('./Product/CarrotPowder.png'),
   Lemon:          require('./Product/Lemon.png'),
   GreenChili:     require('./Product/Greenchili.png'),
   Ginger:         require('./Product/Ginger.png'),

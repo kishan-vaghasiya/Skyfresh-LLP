@@ -137,10 +137,16 @@
   transition: all 0.3s ease;
   text-decoration: none;
   display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 48px;
+  line-height: 1.2;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-yellow), var(--color-green));
+  background: linear-gradient(135deg, #f7d94c 0%, #2e9d6a 100%);
   color: var(--color-white);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }

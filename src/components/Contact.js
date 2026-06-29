@@ -1,10 +1,16 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import ScrollAnimation from './ScrollAnimation';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE_ID  = 'service_oa48jg9';
+const EMAILJS_TEMPLATE_ID = 'template_dfo762i';
+const EMAILJS_PUBLIC_KEY  = 'sipUT_mY7AzjA7DVz';
 
 const Contact = () => {
   const [form, setForm] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
   const [status, setStatus] = useState({ type: '', message: '' });
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,15 +30,42 @@ const Contact = () => {
     return true;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus({ type: '', message: '' });
     if (!validate()) return;
 
-    setTimeout(() => {
-      setStatus({ type: 'success', message: 'Thanks! Your message has been received.' });
+    setLoading(true);
+
+    const templateParams = {
+      from_name:  form.name,
+      from_email: form.email,
+      phone:      form.phone || 'Not provided',
+      subject:    form.subject || 'General Inquiry',
+      message:    form.message,
+    };
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+      setStatus({
+        type: 'success',
+        message: '✅ Thanks! Your message has been received. We will get back to you shortly!',
+      });
       setForm({ name: '', email: '', phone: '', subject: '', message: '' });
-    }, 600);
+    } catch (error) {
+      console.error('EmailJS error:', error);
+      setStatus({
+        type: 'error',
+        message: '❌ Something went wrong. Please email us at export.skyfresh@gmail.com',
+      });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,7 +74,7 @@ const Contact = () => {
 
         <div className="section-header">
           <h2 className="section-title">Contact Us</h2>
-          <p className="section-subtitle">We’re here to assist with all your export needs</p>
+          <p className="section-subtitle">We're here to assist with all your export needs</p>
         </div>
 
         <ScrollAnimation animation="fade-in-up">
@@ -50,24 +83,44 @@ const Contact = () => {
             <div className="contact-form-wrapper">
               <form className="contact-form" onSubmit={handleSubmit} noValidate>
                 <div className="form-grid">
+
                   <div className="form-field">
-                    <label htmlFor="name">Name</label>
-                    <input id="name" name="name" value={form.name} onChange={handleChange} placeholder="Your full name" />
+                    <label htmlFor="name">Name *</label>
+                    <input
+                      id="name" name="name"
+                      value={form.name} onChange={handleChange}
+                      placeholder="Your full name"
+                      disabled={loading}
+                    />
                   </div>
 
                   <div className="form-field">
-                    <label htmlFor="email">Email</label>
-                    <input id="email" name="email" value={form.email} onChange={handleChange} placeholder="you@company.com" />
+                    <label htmlFor="email">Email *</label>
+                    <input
+                      id="email" name="email" type="email"
+                      value={form.email} onChange={handleChange}
+                      placeholder="you@company.com"
+                      disabled={loading}
+                    />
                   </div>
 
                   <div className="form-field">
                     <label htmlFor="phone">Phone</label>
-                    <input id="phone" name="phone" value={form.phone} onChange={handleChange} placeholder="+91 70968 80152" />
+                    <input
+                      id="phone" name="phone"
+                      value={form.phone} onChange={handleChange}
+                      placeholder="+91 70968 80152"
+                      disabled={loading}
+                    />
                   </div>
 
                   <div className="form-field">
                     <label htmlFor="subject">Subject</label>
-                    <select id="subject" name="subject" value={form.subject} onChange={handleChange}>
+                    <select
+                      id="subject" name="subject"
+                      value={form.subject} onChange={handleChange}
+                      disabled={loading}
+                    >
                       <option value="">Choose a subject</option>
                       <option>General Inquiry</option>
                       <option>Export / Bulk Orders</option>
@@ -76,17 +129,29 @@ const Contact = () => {
                 </div>
 
                 <div className="form-field full">
-                  <label htmlFor="message">Message</label>
-                  <textarea id="message" name="message" value={form.message} onChange={handleChange} rows="5" placeholder="Write your message here" />
+                  <label htmlFor="message">Message *</label>
+                  <textarea
+                    id="message" name="message"
+                    value={form.message} onChange={handleChange}
+                    rows="5"
+                    placeholder="Write your message here"
+                    disabled={loading}
+                  />
                 </div>
 
                 {status.message && (
-                  <div className={`form-status ${status.type}`}>{status.message}</div>
+                  <div className={`form-status ${status.type}`}>
+                    {status.message}
+                  </div>
                 )}
 
                 <div className="form-actions">
-                  <button type="submit" className="btn-primary">Send Message</button>
-                  <a className="btn-ghost" href="mailto:export.skyfresh@gmail.com">Email Us</a>
+                  <button type="submit" className="btn-primary" disabled={loading}>
+                    {loading ? '⏳ Sending...' : 'Send Message'}
+                  </button>
+                  <a className="btn-ghost" href="mailto:export.skyfresh@gmail.com">
+                    Email Us
+                  </a>
                 </div>
               </form>
             </div>
@@ -100,7 +165,6 @@ const Contact = () => {
                   <a href="tel:+917041900308">+91 70419 00308</a>
                 </div>
               </div>
-
               <div className="card">
                 <div className="card-icon">📧</div>
                 <div className="card-body">
@@ -108,7 +172,6 @@ const Contact = () => {
                   <a href="mailto:export.skyfresh@gmail.com">export.skyfresh@gmail.com</a>
                 </div>
               </div>
-
               <div className="card">
                 <div className="card-icon">📍</div>
                 <div className="card-body">
@@ -116,7 +179,6 @@ const Contact = () => {
                   <p>Ahmedabad, Gujarat, India</p>
                 </div>
               </div>
-
               <div className="card">
                 <div className="card-icon">🌍</div>
                 <div className="card-body">

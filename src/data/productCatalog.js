@@ -136,7 +136,7 @@ export const PRODUCT_CATALOG = {
     tagline: 'Powder · Flakes',
     heroImage: productImages.Carrot || imgPath.potato,
     category: 'dehydrated',
-    variants: powderFlakes('Dehydrated Carrot', null, productImages.Carrot || imgPath.potato, productImages.Carrot || imgPath.potato),
+    variants: powderFlakes('Dehydrated Carrot', null, productImages.CarrotPowder || productImages.Carrot || imgPath.potato, productImages.Carrot || imgPath.potato),
   },
 
   'ginger': {

@@ -211,7 +211,8 @@
 .product-image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 10;
+  max-height: 220px;
   overflow: hidden;
   background: linear-gradient(135deg, #f3f1ea 0%, #e8e4d8 100%);
 }

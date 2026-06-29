@@ -68,14 +68,12 @@ const Shipping = () => {
   const [shipRef, shipIn] = useInView();
   const [flagRef, flagIn] = useInView();
   const [prodRef, prodIn] = useInView();
-
   return (
     <section id="global-reach" className="shipping-section">
       <div className="container">
 
-        {/* ── Header ── */}
         <div ref={headerRef} className={`s-header ${headerIn ? 'anim-up' : 'pre-anim'}`}>
-          <span className="s-eyebrow">Gujarat Origin · Export Ready</span>
+          <span className="s-eyebrow">Indian Origin · Export Ready</span>
           <h2 className="s-title">Premium Products &amp;<br />Quality Commitment</h2>
           <p className="s-subtitle">
             Dehydrated vegetables, spices &amp; processed foods — farm‑fresh,
@@ -83,7 +81,6 @@ const Shipping = () => {
           </p>
         </div>
 
-        {/* ── Features ── */}
         <div ref={featRef} className="s-features">
           {features.map((f, i) => (
             <div
