@@ -238,27 +238,27 @@ export const PRODUCT_CATALOG = {
 
   // ── Pulses & Protein ──────────────────────────────────────────────────────
   'moong-dal': {
-    title: 'Moong Dal',
+    title: 'Moong Dal (Split Yellow Mung Beans)',
     tagline: 'Premium quality split green gram',
     heroImage: productImages.Moongdal || U.moong,
     category: 'pulses',
-    variants: [{ id: 'whole', type: 'Whole', name: 'Moong Dal', image: productImages.Moongdal || U.moong, specs: [{ label: 'Origin', value: ORIGIN }, { label: 'Packing', value: '25–50 kg poly bag in carton' }, { label: 'Grade', value: GRADE }] }],
+    variants: [{ id: 'whole', type: 'Whole', name: 'Moong Dal (Split Yellow Mung Beans)', image: productImages.Moongdal || U.moong, specs: [{ label: 'Origin', value: ORIGIN }, { label: 'Packing', value: '25–50 kg poly bag in carton' }, { label: 'Grade', value: GRADE }] }],
   },
 
   'chana-dal': {
-    title: 'Chana Dal',
+    title: 'Chana Dal (Split Chickpeas)',
     tagline: 'Split chickpea — export quality',
     heroImage: productImages.ChanaDal || U.chana,
     category: 'pulses',
-    variants: [{ id: 'whole', type: 'Whole', name: 'Chana Dal', image: productImages.ChanaDal || U.chana, specs: [{ label: 'Origin', value: ORIGIN }, { label: 'Packing', value: '25–50 kg poly bag in carton' }, { label: 'Grade', value: GRADE }] }],
+    variants: [{ id: 'whole', type: 'Whole', name: 'Chana Dal (Split Chickpeas)', image: productImages.ChanaDal || U.chana, specs: [{ label: 'Origin', value: ORIGIN }, { label: 'Packing', value: '25–50 kg poly bag in carton' }, { label: 'Grade', value: GRADE }] }],
   },
 
   'urad-dal': {
-    title: 'Urad Dal (Adad Dal)',
+    title: 'Urad Dal (Split Black Gram)',
     tagline: 'Black gram — premium grade',
     heroImage: productImages.UradDal || U.urad,
     category: 'pulses',
-    variants: [{ id: 'whole', type: 'Whole', name: 'Urad Dal', image: productImages.UradDal || U.urad, specs: [{ label: 'Origin', value: ORIGIN }, { label: 'Packing', value: '25–50 kg poly bag in carton' }, { label: 'Grade', value: GRADE }] }],
+    variants: [{ id: 'whole', type: 'Whole', name: 'Urad Dal (Split Black Gram)', image: productImages.UradDal || U.urad, specs: [{ label: 'Origin', value: ORIGIN }, { label: 'Packing', value: '25–50 kg poly bag in carton' }, { label: 'Grade', value: GRADE }] }],
   },
 
   'soya-paneer': {

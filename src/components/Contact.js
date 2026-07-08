@@ -109,7 +109,7 @@ const Contact = () => {
                     <input
                       id="phone" name="phone"
                       value={form.phone} onChange={handleChange}
-                      placeholder="+91 70968 80152"
+                      placeholder="+91 1234567890"
                       disabled={loading}
                     />
                   </div>
